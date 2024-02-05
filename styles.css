@@ -19,7 +19,7 @@ body {
 
 .display {
     display: flex;
-    flex: 3;
+    flex: 2;
     justify-content: flex-end;
     align-items: center;
     box-sizing: border-box;
@@ -29,12 +29,32 @@ body {
 .row1,
 .row2,
 .row3,
-.row4 {
+.row4,
+.row5 {
     display: flex;
-    flex: 2;
+    flex: 1;
 }
 
 .button {
     display: flex;
     flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: #D4D4D2;
+    border-width: 1px;
+    border-radius: 16px;
+}
+
+.button.clear,
+.button.zero {
+    flex: 3;
+}
+
+.button.add,
+.button.subtract,
+.button.multiply,
+.button.divide,
+.button.equal {
+    background-color: #FF9500;
 }
