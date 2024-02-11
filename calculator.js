@@ -1,10 +1,11 @@
 var firstNum;
 var secondNum;
-var operator;
+var operatorIndex;
 var displayText = "";
+let result;
 
 function add(num1, num2) {
-  return num1 + num2;
+  return Number(num1) + Number(num2);
 }
 
 function subtract(num1, num2) {
@@ -19,8 +20,42 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-function operatorFunc(firstNum, secondNum, operator) {
-  add(firstNum, secondNum);
+function operate(displayMath) {
+  let matharray = displayMath.split(" ");
+  //Calculates multiplication and division first
+  while (matharray.includes("*") || matharray.includes("/")) {
+    if (matharray.indexOf("*") > matharray.indexOf("/")) {
+      let operatorIndex = matharray.indexOf("*");
+      firstNum = matharray[operatorIndex - 1];
+      secondNum = matharray[operatorIndex + 1];
+      result = multiply(firstNum, secondNum);
+      matharray.splice(operatorIndex - 1, 3, result);
+    } else {
+      let operatorIndex = matharray.indexOf("/");
+      firstNum = matharray[operatorIndex - 1];
+      secondNum = matharray[operatorIndex + 1];
+      result = divide(firstNum, secondNum);
+      matharray.splice(operatorIndex - 1, 3, result);
+    }
+  }
+  //Calculates addition and subtraction
+  while (matharray.includes("+") || matharray.includes("-")) {
+    if (matharray.indexOf("+") > matharray.indexOf("-")) {
+      let operatorIndex = matharray.indexOf("+");
+      firstNum = matharray[operatorIndex - 1];
+      secondNum = matharray[operatorIndex + 1];
+      result = add(firstNum, secondNum);
+      matharray.splice(operatorIndex - 1, 3, result);
+    } else {
+      let operatorIndex = matharray.indexOf("-");
+      firstNum = matharray[operatorIndex - 1];
+      secondNum = matharray[operatorIndex + 1];
+      result = subtract(firstNum, secondNum);
+      matharray.splice(operatorIndex - 1, 3, result);
+    }
+  }
+
+  return matharray;
 }
 
 const display = document.querySelector(".display");
@@ -110,5 +145,11 @@ btnmultiply.addEventListener("click", () => {
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
   displayText = "";
+  display.textContent = displayText;
+});
+
+const equal = document.querySelector("#equal");
+equal.addEventListener("click", () => {
+  displayText = operate(displayText)[0];
   display.textContent = displayText;
 });
