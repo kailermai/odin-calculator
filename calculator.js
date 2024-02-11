@@ -28,12 +28,18 @@ function operate(displayMath) {
       let operatorIndex = matharray.indexOf("*");
       firstNum = matharray[operatorIndex - 1];
       secondNum = matharray[operatorIndex + 1];
+      if (secondNum === "") {
+        secondNum = 1;
+      }
       result = multiply(firstNum, secondNum);
       matharray.splice(operatorIndex - 1, 3, result);
     } else {
       let operatorIndex = matharray.indexOf("/");
       firstNum = matharray[operatorIndex - 1];
       secondNum = matharray[operatorIndex + 1];
+      if (secondNum === "") {
+        secondNum = 1;
+      }
       result = divide(firstNum, secondNum);
       matharray.splice(operatorIndex - 1, 3, result);
     }
