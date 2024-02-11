@@ -83,6 +83,30 @@ num9.addEventListener("click", () => {
   display.textContent = displayText;
 });
 
+const btndivide = document.querySelector("#divide");
+btndivide.addEventListener("click", () => {
+  displayText += " / ";
+  display.textContent = displayText;
+});
+
+const btnadd = document.querySelector("#add");
+btnadd.addEventListener("click", () => {
+  displayText += " + ";
+  display.textContent = displayText;
+});
+
+const btnsubtract = document.querySelector("#subtract");
+btnsubtract.addEventListener("click", () => {
+  displayText += " - ";
+  display.textContent = displayText;
+});
+
+const btnmultiply = document.querySelector("#multiply");
+btnmultiply.addEventListener("click", () => {
+  displayText += " * ";
+  display.textContent = displayText;
+});
+
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
   displayText = "";

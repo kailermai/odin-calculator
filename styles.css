@@ -24,6 +24,7 @@ body {
     align-items: center;
     box-sizing: border-box;
     padding: 32px;
+    max-height: 40%;
 }
 
 .row1,
