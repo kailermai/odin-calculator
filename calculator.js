@@ -152,4 +152,7 @@ const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
   displayText = Math.floor(operate(displayText)[0] * 100) / 100;
   display.textContent = displayText;
+  if (displayText == Infinity) {
+    display.textContent = "You cannot divide by zero";
+  }
 });
