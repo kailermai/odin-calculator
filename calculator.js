@@ -150,6 +150,6 @@ clear.addEventListener("click", () => {
 
 const equal = document.querySelector("#equal");
 equal.addEventListener("click", () => {
-  displayText = operate(displayText)[0];
+  displayText = Math.floor(operate(displayText)[0] * 100) / 100;
   display.textContent = displayText;
 });
